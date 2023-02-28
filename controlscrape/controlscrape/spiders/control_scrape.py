@@ -47,11 +47,12 @@ class ControlSpider(scrapy.Spider):
             .split("/")[-1]
             .strip()
         )
-        self.new_json[str(random.getrandbits(20))] = {
-            "topic_name": topic_name,
-            "item_name": item_name,
-            "item_image_src": re.sub(r"/revision.*", "", image_src),
-        }
+        if image_src is not None:
+            self.new_json[str(random.getrandbits(20))] = {
+                "topic_name": topic_name,
+                "item_name": item_name,
+                "item_image_src": re.sub(r"/revision.*", "", image_src[0]),
+            }
 
     def closed(self, reason):
         # with open(
