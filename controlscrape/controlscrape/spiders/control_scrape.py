@@ -49,17 +49,21 @@ class ControlResearchSpider(scrapy.Spider):
         )
         item_para = response.xpath('//div[@class="poem va-transcript-text"]/p').get()
         if len(image_src) == 0:
-            item_image_src = "bruh"
+            item_image_src = "n/a"
 
         else:
             item_image_src = re.sub(r"/revision.*", "", image_src[0])
-        self.new_json[str(random.getrandbits(20))] = {
-            "topic_name": topic_name,
-            "item_name": item_name,
-            "item_url": response.url,
-            "item_text": item_para,
-            "item_image_src": item_image_src,
-        }
+            item_to_append = {
+                # "topic_name": topic_name,
+                "item_name": item_name,
+                "item_url": response.url,
+                "item_text": item_para if item_para is not None else "n/a",
+                "item_image_src": item_image_src,
+            }
+            if topic_name not in self.new_json.keys():
+                self.new_json[topic_name] = [item_to_append]
+            else:
+                self.new_json[topic_name].append(item_to_append)
 
     def closed(self, reason):
         # with open(
@@ -69,7 +73,7 @@ class ControlResearchSpider(scrapy.Spider):
         # ) as fout:
         #     json.dump(self.json_content, fout, indent=4)
         with open(
-            f"/home/kshitij/Desktop/control_project/Control_collectibles_app/research_and_records.json",
+            f"/home/kshitij/Desktop/control_project/Control_collectibles_app/json_files/research_and_records.json",
             "w",
             encoding="utf-8",
         ) as fout:
@@ -122,17 +126,21 @@ class ControlCorrespondenceSpider(scrapy.Spider):
         )
         item_para = response.xpath('//div[@class="poem va-transcript-text"]/p').get()
         if len(image_src) == 0:
-            item_image_src = "bruh"
+            item_image_src = "n/a"
 
         else:
             item_image_src = re.sub(r"/revision.*", "", image_src[0])
-        self.new_json[str(random.getrandbits(20))] = {
-            "topic_name": topic_name,
-            "item_name": item_name,
-            "item_url": response.url,
-            "item_text": item_para,
-            "item_image_src": item_image_src,
-        }
+            item_to_append = {
+                # "topic_name": topic_name,
+                "item_name": item_name,
+                "item_url": response.url,
+                "item_text": item_para if item_para is not None else "n/a",
+                "item_image_src": item_image_src,
+            }
+            if topic_name not in self.new_json.keys():
+                self.new_json[topic_name] = [item_to_append]
+            else:
+                self.new_json[topic_name].append(item_to_append)
 
     def closed(self, reason):
         # with open(
@@ -142,7 +150,7 @@ class ControlCorrespondenceSpider(scrapy.Spider):
         # ) as fout:
         #     json.dump(self.json_content, fout, indent=4)
         with open(
-            f"/home/kshitij/Desktop/control_project/Control_collectibles_app/correspondence.json",
+            f"/home/kshitij/Desktop/control_project/Control_collectibles_app/json_files/correspondence.json",
             "w",
             encoding="utf-8",
         ) as fout:
@@ -188,13 +196,6 @@ class ControlHotlineSpider(scrapy.Spider):
         if len(image_src) > 1:
             print("woah woah woah easy there bucko")
         item_name = response.xpath('//*[@id="firstHeading"]/text()').get().strip()
-        # topic_name = (
-        #     response.xpath('//a[@data-tracking-label="categories-top-more-0"]/@title')
-        #     .get()
-        #     .split("/")[-1]
-        #     .strip()
-        # )
-        # marshall topics in hotline category are verification needed so fix that
         topic_name = (
             response.xpath('//div[@class="page-header__categories"]/a/text()')
             .getall()[-1]
@@ -204,17 +205,31 @@ class ControlHotlineSpider(scrapy.Spider):
 
         item_para = response.xpath('//div[@class="poem va-transcript-text"]/p').get()
         if len(image_src) == 0:
-            item_image_src = "bruh"
-
+            item_image_src = "n/a"
         else:
             item_image_src = re.sub(r"/revision.*", "", image_src[0])
-        self.new_json[str(random.getrandbits(20))] = {
-            "topic_name": topic_name,
+
+        item_to_append = {
+            # "topic_name": topic_name,
             "item_name": item_name,
             "item_url": response.url,
-            "item_text": item_para,
+            "item_text": item_para if item_para is not None else "n/a",
             "item_image_src": item_image_src,
         }
+
+        if topic_name not in self.new_json.keys():
+            print(topic_name)
+            self.new_json[topic_name] = [item_to_append]
+        else:
+            self.new_json[topic_name].append(item_to_append)
+
+        # self.new_json[str(random.getrandbits(20))] = {
+        #     "topic_name": topic_name,
+        #     "item_name": item_name,
+        #     "item_url": response.url,
+        #     "item_text": item_para,
+        #     "item_image_src": item_image_src,
+        # }
 
     def closed(self, reason):
         # with open(
@@ -224,7 +239,7 @@ class ControlHotlineSpider(scrapy.Spider):
         # ) as fout:
         #     json.dump(self.json_content, fout, indent=4)
         with open(
-            f"/home/kshitij/Desktop/control_project/Control_collectibles_app/hotline.json",
+            f"/home/kshitij/Desktop/control_project/Control_collectibles_app/json_files/hotline.json",
             "w",
             encoding="utf-8",
         ) as fout:
