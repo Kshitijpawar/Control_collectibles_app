@@ -12,6 +12,11 @@ class Group {
           return Subgroup.fromJson(entry.value, entry.key);
         }).toList());
   }
+
+  Map<String, dynamic> toJson() {
+    return {'groupName' : groupName, 'subgroups': subgroups.map((e) => e.toJson()).toList()};
+  }
+
   @override
-  String toString() => 'Groupname :$groupName\n';
+  String toString() => 'Groupname :$groupName\t';
 }

@@ -21,6 +21,10 @@ class Subgroup {
         }).toList());
   }
 
+  Map<String, dynamic> toJson() {
+    return {'title': title, 'items': items.map((e) => e.toJson()).toList()};
+  }
+
   @override
   String toString() => '\nSubgroup:$title with items: \n \t $items';
 }

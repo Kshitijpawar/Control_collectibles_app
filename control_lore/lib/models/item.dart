@@ -16,6 +16,16 @@ class Item {
       itemImageUrl: json["item_image_src"],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'itemName': itemName,
+      'itemUrl': itemUrl,
+      'itemImageUrl': itemImageUrl,
+      'itemText': itemText
+    };
+  }
+
   @override
   String toString() => 'Itemname :$itemName\n';
 }
