@@ -39,7 +39,13 @@ class SubgroupPage extends StatelessWidget {
             // );
             return ExpansionTile(
               childrenPadding: EdgeInsets.only(left: 30),
-              title: Text(subgroups[index].title),
+              title: Text(
+                subgroups[index].title,
+                style: TextStyle(
+                  fontFamily: "Interstate",
+                  color: Color.fromARGB(255, 231, 0, 13),
+                ),
+              ),
               // childrenPadding: EdgeInsets.fromLTRB(25.0, 25.0, 25.0, 5.0),
               children: [
                 ListView.builder(
@@ -52,8 +58,18 @@ class SubgroupPage extends StatelessWidget {
                             extra: subgroups[index].items[idx]);
                       },
                       child: Card(
-                          margin: EdgeInsets.all(12),
-                          child: Text(subgroups[index].items[idx].itemName)),
+                        margin: EdgeInsets.all(12),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            subgroups[index].items[idx].itemName,
+                            style: TextStyle(
+                              fontFamily: 'AGBuchBQ-Regular',
+                              color: Color.fromARGB(255, 0, 0, 0),
+                            ),
+                          ),
+                        ),
+                      ),
                     );
                   },
                   shrinkWrap: true,

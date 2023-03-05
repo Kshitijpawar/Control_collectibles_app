@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
           child: Container(
             height: MediaQuery.of(context).size.height / 4,
             width: MediaQuery.of(context).size.width / 2,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                   opacity: 0.5,
                   image: AssetImage(
