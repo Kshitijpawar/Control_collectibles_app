@@ -10,18 +10,19 @@ class BackgroundWidget extends StatelessWidget {
       children: [
         Align(
           child: Container(
-            height: MediaQuery.of(context).size.height / 4,
-            width: MediaQuery.of(context).size.width / 2,
+            // height: MediaQuery.of(context).size.height / 4,
+            // width: MediaQuery.of(context).size.width / 2,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                  opacity: 0.5,
-                  image: AssetImage(
-                    'assets/fbc.png',
-                  ),
-                  fit: BoxFit.fill),
+                scale: 10.0,
+                opacity: 0.5,
+                image: AssetImage(
+                  'assets/fbc.png',
+                ),
+                // fit: BoxFit.none,
+              ),
             ),
           ),
-
         ),
         theChildWidget,
       ],

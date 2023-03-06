@@ -1,9 +1,11 @@
+import 'package:control_lore/screens/background_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../models/group.dart';
+import 'app_bar.dart';
 
 Future<List<Group>> fetchData() async {
   // Future<String> fetchData() async {
@@ -49,76 +51,58 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Fetch New Data example'),
-      ),
+      appBar: CustomAppBar(),
       backgroundColor: Color.fromARGB(255, 0, 0, 0),
-      body: Stack(children: [
-        Align(
-          alignment: AlignmentDirectional.center,
-          child: Container(
-            height: MediaQuery.of(context).size.height / 4,
-            width: MediaQuery.of(context).size.width / 2,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                  opacity: 0.5,
-                  image: AssetImage(
-                    'assets/fbc.png',
-                  ),
-                  fit: BoxFit.fill),
-            ),
-          ),
-        ),
-        FutureBuilder<List<Group>>(
-          future: theData,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              // var ok = snapshot.data!.toString();
-              List<Group> jsonData = snapshot.data!;
-              // return Text('loaded the json: $ok');
-              return GridView.builder(
-                  shrinkWrap: true,
-                  itemCount: jsonData.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio: 7 / 10,
-                    crossAxisCount: 2,
-                  ),
-                  itemBuilder: (context, index) {
-                    // String gName = jsonData[index].groupName;
-                    return GestureDetector(
-                      onTap: () {
-                        // GoRouter.of(context)
-                        //     .pushNamed("subgrouppage", extra: jsonData[index].subgroups);
-                        // GoRouter.of(context)
-                        // .pushNamed("subgrouppage", queryParams: {'subgroups':'jsonData[index].subgroups'});
-                        GoRouter.of(context).pushNamed('subgrouppage',
-                            extra: jsonData[index].subgroups);
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          height: 500,
-                          width: 500,
-                          // color: Colors.blue,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
+      body: BackgroundWidget(
+          theChildWidget: FutureBuilder<List<Group>>(
+        future: theData,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            // var ok = snapshot.data!.toString();
+            List<Group> jsonData = snapshot.data!;
+            // return Text('loaded the json: $ok');
+            return GridView.builder(
+                shrinkWrap: true,
+                itemCount: jsonData.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  childAspectRatio: 7 / 10,
+                  crossAxisCount: 2,
+                ),
+                itemBuilder: (context, index) {
+                  // String gName = jsonData[index].groupName;
+                  return GestureDetector(
+                    onTap: () {
+                      // GoRouter.of(context)
+                      //     .pushNamed("subgrouppage", extra: jsonData[index].subgroups);
+                      // GoRouter.of(context)
+                      // .pushNamed("subgrouppage", queryParams: {'subgroups':'jsonData[index].subgroups'});
+                      GoRouter.of(context).pushNamed('subgrouppage',
+                          extra: jsonData[index].subgroups);
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        height: 500,
+                        width: 500,
+                        // color: Colors.blue,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
                                 opacity: 0.9,
-                                  fit: BoxFit.fill,
-                                  image: AssetImage(
-                                      'assets/${jsonData[index].groupName}.png'))),
-                          child: Text(''),
-                        ),
+                                fit: BoxFit.fill,
+                                image: AssetImage(
+                                    'assets/${jsonData[index].groupName}.png'))),
+                        child: Text(''),
                       ),
-                    );
-                  });
-            } else if (snapshot.hasError) {
-              return Text("${snapshot.error}");
-            }
-            // By default, show a loading spinner
-            return Center(child: CircularProgressIndicator());
-          },
-        ),
-      ]),
+                    ),
+                  );
+                });
+          } else if (snapshot.hasError) {
+            return Text("${snapshot.error}");
+          }
+          // By default, show a loading spinner
+          return Center(child: CircularProgressIndicator());
+        },
+      )),
     );
   }
 }
