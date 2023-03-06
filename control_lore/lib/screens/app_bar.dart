@@ -17,13 +17,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           fontSize: 20.0,
           color: Color.fromARGB(255, 231, 0, 13),
         ),
-        
       ),
       backgroundColor: Color.fromARGB(255, 40, 40, 40),
     );
   }
-
-  // @override
-  // TODO: implement preferredSize
-  // Size get preferredSize => throw UnimplementedError();
 }

@@ -10,8 +10,6 @@ class BackgroundWidget extends StatelessWidget {
       children: [
         Align(
           child: Container(
-            // height: MediaQuery.of(context).size.height / 4,
-            // width: MediaQuery.of(context).size.width / 2,
             decoration: const BoxDecoration(
               image: DecorationImage(
                 scale: 10.0,
@@ -19,7 +17,6 @@ class BackgroundWidget extends StatelessWidget {
                 image: AssetImage(
                   'assets/fbc.png',
                 ),
-                // fit: BoxFit.none,
               ),
             ),
           ),

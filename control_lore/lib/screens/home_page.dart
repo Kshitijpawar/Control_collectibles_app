@@ -8,27 +8,19 @@ import '../models/group.dart';
 import 'app_bar.dart';
 
 Future<List<Group>> fetchData() async {
-  // Future<String> fetchData() async {
-
   final List<Group> finalData = [];
 
   await Future.delayed(const Duration(seconds: 2), () {});
-  final FirebaseApp _fbApp = await Firebase.initializeApp();
-  // final List<Group>
+  // ignore: unused_local_variable
+  final FirebaseApp fbApp = await Firebase.initializeApp();
 
   final testRef = FirebaseDatabase.instance.ref();
   final stringData = await testRef.get();
-  // print(stringData.value as Map<String, dynamic);
   final jsonMap = stringData.value as Map;
   jsonMap.forEach((key, value) {
-    // print(key);
     finalData.add(Group.fromJson(key, value));
-    print("added one group");
   });
-  // print(finalData);
   return finalData;
-  // return "Data Loaded";
-  // print(jsonMap.keys.toList());
 }
 
 class HomePage extends StatefulWidget {
@@ -43,7 +35,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     theData = fetchData();
   }
@@ -51,58 +42,54 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
-      backgroundColor: Color.fromARGB(255, 0, 0, 0),
+      appBar: const CustomAppBar(),
+      backgroundColor: const Color.fromARGB(255, 0, 0, 0),
       body: BackgroundWidget(
-          theChildWidget: FutureBuilder<List<Group>>(
-        future: theData,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            // var ok = snapshot.data!.toString();
-            List<Group> jsonData = snapshot.data!;
-            // return Text('loaded the json: $ok');
-            return GridView.builder(
-                shrinkWrap: true,
-                itemCount: jsonData.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  childAspectRatio: 7 / 10,
-                  crossAxisCount: 2,
-                ),
-                itemBuilder: (context, index) {
-                  // String gName = jsonData[index].groupName;
-                  return GestureDetector(
-                    onTap: () {
-                      // GoRouter.of(context)
-                      //     .pushNamed("subgrouppage", extra: jsonData[index].subgroups);
-                      // GoRouter.of(context)
-                      // .pushNamed("subgrouppage", queryParams: {'subgroups':'jsonData[index].subgroups'});
-                      GoRouter.of(context).pushNamed('subgrouppage',
-                          extra: jsonData[index].subgroups);
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: 500,
-                        width: 500,
-                        // color: Colors.blue,
-                        decoration: BoxDecoration(
+        theChildWidget: FutureBuilder<List<Group>>(
+          future: theData,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              List<Group> jsonData = snapshot.data!;
+              return GridView.builder(
+                  shrinkWrap: true,
+                  itemCount: jsonData.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    childAspectRatio: 7 / 10,
+                    crossAxisCount: 2,
+                  ),
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        GoRouter.of(context).pushNamed('subgrouppage',
+                            extra: jsonData[index].subgroups);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          height: 500,
+                          width: 500,
+                          decoration: BoxDecoration(
                             image: DecorationImage(
-                                opacity: 0.9,
-                                fit: BoxFit.fill,
-                                image: AssetImage(
-                                    'assets/${jsonData[index].groupName}.png'))),
-                        child: Text(''),
+                              opacity: 0.9,
+                              fit: BoxFit.fill,
+                              image: AssetImage(
+                                'assets/${jsonData[index].groupName}.png',
+                              ),
+                            ),
+                          ),
+                          child: const Text(''),
+                        ),
                       ),
-                    ),
-                  );
-                });
-          } else if (snapshot.hasError) {
-            return Text("${snapshot.error}");
-          }
-          // By default, show a loading spinner
-          return Center(child: CircularProgressIndicator());
-        },
-      )),
+                    );
+                  });
+            } else if (snapshot.hasError) {
+              return Text("${snapshot.error}");
+            }
+            // By default, show a loading spinner
+            return const Center(child: CircularProgressIndicator());
+          },
+        ),
+      ),
     );
   }
 }
