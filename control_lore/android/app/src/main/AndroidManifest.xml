@@ -2,7 +2,7 @@
     package="com.example.control_lore">
    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
    <application
-        android:label="control_lore"
+        android:label="Control Wiki"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

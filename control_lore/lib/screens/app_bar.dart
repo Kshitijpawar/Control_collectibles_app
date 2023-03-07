@@ -4,12 +4,32 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
 
   @override
-  Size get preferredSize => Size.fromHeight(60.0);
+  Size get preferredSize => const Size.fromHeight(60.0);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      
+      actions: [
+        IconButton(
+          icon: const Icon(
+            Icons.info_outlined,
+          ),
+          onPressed: () {
+            return showAboutDialog(
+              context: context,
+              applicationName: "Control Wiki",
+              applicationVersion: "1.0.0",
+              applicationLegalese: "Copyrights Reserved. Data scraped from Fandom. All images are property of Remedy Entertainment, used for personal use only.",
+              children: [
+                const Padding(
+                  padding: EdgeInsets.all(15.0),
+                  child: Text("Made by Kshitij Pawar"),
+                ),
+              ],
+            );
+          },
+        )
+      ],
       title: const Text(
         'FBC Archives',
         style: TextStyle(
@@ -19,7 +39,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           color: Color.fromARGB(255, 231, 0, 13),
         ),
       ),
-      backgroundColor: Color.fromARGB(255, 40, 40, 40),
+      backgroundColor: const Color.fromARGB(255, 40, 40, 40),
     );
   }
 }
