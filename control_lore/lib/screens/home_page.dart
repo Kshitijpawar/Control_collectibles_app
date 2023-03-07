@@ -10,7 +10,7 @@ import 'app_bar.dart';
 Future<List<Group>> fetchData() async {
   final List<Group> finalData = [];
 
-  await Future.delayed(const Duration(seconds: 2), () {});
+  // await Future.delayed(const Duration(seconds: 2), () {});
   // ignore: unused_local_variable
   final FirebaseApp fbApp = await Firebase.initializeApp();
 

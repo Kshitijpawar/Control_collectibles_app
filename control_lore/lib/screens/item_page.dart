@@ -39,7 +39,9 @@ class ItemPage extends StatelessWidget {
                   child: CachedNetworkImage(
                     imageUrl: item.itemImageUrl,
                     errorWidget: (context, url, error) {
-                      return const Text("No Image Found");
+                      return const Image(
+                        image: ExactAssetImage('assets/Hiss_Pattern.png'),
+                      );
                     },
                     progressIndicatorBuilder: (context, url, progress) {
                       return Center(
