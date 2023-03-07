@@ -9,6 +9,7 @@
 
 ## To Do
 - Scrape multimedia youtube links and add to mobile app as url redirect button
+- Add local json load and parsing instead of firebase dependency.
 - QA System hosted on server(Provided I get resources to host the models lol)
 ## Images
 <br></br>
