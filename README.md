@@ -14,8 +14,8 @@
 ## Images
 <br></br>
 <br></br>
-![Screenshot 1](images/Screenshot_1678166339.png)
-![Screenshot 2](images/Screenshot_1678166348.png)
-![Screenshot 3](images/Screenshot_1678166356.png)
-![Screenshot 4](images/Screenshot_1678166367.png)
-![Screenshot 5](images/Screenshot_1678166382.png)
+<img src="images/Screenshot_1678166339.png" alt="screenshot 1" height="500">
+<img src="images/Screenshot_1678166348.png" alt="screenshot 2" height="500">
+<img src="images/Screenshot_1678166356.png" alt="screenshot 3" height="500">
+<img src="images/Screenshot_1678166367.png" alt="screenshot 4" height="500">
+<img src="images/Screenshot_1678166382.png" alt="screenshot 5" height="500">
