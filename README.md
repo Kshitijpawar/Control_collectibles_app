@@ -7,11 +7,14 @@
 - controlscrape: Scrapy code
 - control_lore: Flutter application
 
+## To Do
+- Scrape multimedia youtube links and add to mobile app as url redirect button
+- QA System hosted on server(Provided I get resources to host the models lol)
 ## Images
 <br></br>
 <br></br>
-![Screenshot 1](Control_collectibles_app/images/Screenshot_1678166339.png)
-![Screenshot 2](Control_collectibles_app/images/Screenshot_1678166348.png)
-![Screenshot 3](Control_collectibles_app/images/Screenshot_1678166356.png)
-![Screenshot 4](Control_collectibles_app/images/Screenshot_1678166367.png)
-![Screenshot 5](Control_collectibles_app/images/Screenshot_1678166382.png)
+![Screenshot 1](images/Screenshot_1678166339.png)
+![Screenshot 2](images/Screenshot_1678166348.png)
+![Screenshot 3](images/Screenshot_1678166356.png)
+![Screenshot 4](images/Screenshot_1678166367.png)
+![Screenshot 5](images/Screenshot_1678166382.png)
