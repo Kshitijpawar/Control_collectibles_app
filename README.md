@@ -1,4 +1,4 @@
-# Mobile App to view collectibles from 2019 video game Control by Remedy Entertainment.
+# Mobile App to view collectibles from 2019 video game [Control](https://en.wikipedia.org/wiki/Control_(video_game)) by Remedy Entertainment.
 
 ### Data scraped using Python Scrapy library and stored in Firebase Realtime database. Flutter frontend for mobile application
 
