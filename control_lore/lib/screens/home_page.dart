@@ -3,7 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
+import 'dart:convert';
+import 'package:flutter/services.dart';
 import '../models/group.dart';
 import 'app_bar.dart';
 
@@ -23,6 +24,17 @@ Future<List<Group>> fetchData() async {
   return finalData;
 }
 
+Future<List<Group>> fetchDataFromJson() async {
+  final List<Group> finalJsonData = [];
+  String jsonString =
+      await rootBundle.loadString('assets/json_file/master.json');
+  final jsonMap = jsonDecode(jsonString);
+  jsonMap.forEach((key, value) {
+    finalJsonData.add(Group.fromJson(key, value));
+  });
+  return finalJsonData;
+}
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -36,7 +48,8 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    theData = fetchData();
+    // theData = fetchData();
+    theData = fetchDataFromJson();
   }
 
   @override
