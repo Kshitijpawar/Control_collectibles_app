@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
@@ -11,6 +12,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       actions: [
         IconButton(
+          onPressed: () {
+            print("Question answer button pressed");
+            GoRouter.of(context).pushNamed('chatpage',
+                            );
+          },
+          icon: const Icon(Icons.question_answer),
+        ),
+        IconButton(
           icon: const Icon(
             Icons.info_outlined,
           ),
@@ -19,7 +28,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               context: context,
               applicationName: "Control Wiki",
               applicationVersion: "1.0.0",
-              applicationLegalese: "Copyrights Reserved. Data scraped from Fandom. All images are property of Remedy Entertainment, used for personal use only.",
+              applicationLegalese:
+                  "Copyrights Reserved. Data scraped from Fandom. All images are property of Remedy Entertainment, used for personal use only.",
               children: [
                 const Padding(
                   padding: EdgeInsets.all(15.0),

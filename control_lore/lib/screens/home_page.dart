@@ -52,6 +52,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     // theData = fetchData();
     theData = fetchDataFromJson();
+
   }
 
   @override

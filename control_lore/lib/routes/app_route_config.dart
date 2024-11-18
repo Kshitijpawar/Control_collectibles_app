@@ -1,4 +1,5 @@
 import 'package:control_lore/models/subgroup.dart';
+import 'package:control_lore/screens/chat_page.dart';
 import 'package:control_lore/screens/home_page.dart';
 import 'package:control_lore/screens/item_page.dart';
 import 'package:control_lore/screens/subgroup_page.dart';
@@ -35,6 +36,17 @@ class MyAppRouter {
           return MaterialPage(
             child: ItemPage(
               item: state.extra as Item,
+            ),
+          );
+        },
+      ),
+      GoRoute(
+        path: '/chatpage',
+        name: 'chatpage',
+        pageBuilder: (context, state) {
+          return const MaterialPage(
+            child: ChatPage(
+              // item: state.extra as Item,
             ),
           );
         },
