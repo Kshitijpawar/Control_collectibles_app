@@ -17,9 +17,9 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
+      routerConfig: MyAppRouter().router,
       // routeInformationParser: MyAppRouter().router.routeInformationParser,
       // routerDelegate: MyAppRouter().router.routerDelegate,
-      routerConfig: MyAppRouter().router,
     );
   }
 }

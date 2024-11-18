@@ -11,6 +11,7 @@ import '../models/item.dart';
 
 class MyAppRouter {
   GoRouter router = GoRouter(
+    initialLocation: "/",
     routes: [
       GoRoute(
           path: '/',
