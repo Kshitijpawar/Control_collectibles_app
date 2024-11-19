@@ -2,7 +2,7 @@ import 'package:control_lore/models/chat_message.dart';
 import 'package:control_lore/screens/app_bar.dart';
 import 'package:control_lore/screens/background_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+// import 'package:flutter/widgets.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:control_lore/api_key.dart';
 
@@ -68,6 +68,7 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   void initState() {
+    super.initState();
     // TODO: implement initState
     _messagesNotifier.addListener(_onMessagesChanged);
   }
