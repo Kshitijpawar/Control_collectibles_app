@@ -127,3 +127,5 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+control_lore/lib/api_key.dart
+.vscode/launch.json
