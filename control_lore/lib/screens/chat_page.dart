@@ -1,5 +1,5 @@
 import 'package:control_lore/markdown_style.dart';
-import 'package:control_lore/models/chat_message.dart';
+
 import 'package:control_lore/screens/app_bar.dart';
 import 'package:control_lore/screens/background_page.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 // import 'package:flutter/widgets.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
-import 'package:control_lore/api_key.dart';
+
 
 const String _apiKey = String.fromEnvironment("API_KEY");
 
