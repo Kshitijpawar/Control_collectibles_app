@@ -96,7 +96,7 @@ class _ChatWidgetState extends State<ChatWidget> {
         color: Color.fromARGB(255, 231, 0, 13),
       ),
       contentPadding: const EdgeInsets.all(15),
-      hintText: 'Enter a prompt...',
+      hintText: 'Ask the Board...',
       border: OutlineInputBorder(
         borderRadius: const BorderRadius.all(
           Radius.circular(14),
@@ -166,7 +166,8 @@ class _ChatWidgetState extends State<ChatWidget> {
                     focusNode: _textFieldFocus,
                     decoration: textFieldDecoration,
                     controller: _textController,
-                    onSubmitted: _sendChatMessage,
+                    // onSubmitted: _sendChatMessage,
+                    onSubmitted: _sendJsonPrompt,
                   ),
                 ),
                 const SizedBox.square(
