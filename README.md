@@ -1,13 +1,15 @@
 <!-- # Mobile App to view collectibles and from 2019 video game [Control](https://en.wikipedia.org/wiki/Control_(video_game)) by Remedy Entertainment. -->
 
-# This mobile app offers a seamless way to explore and retrieve collectibles information from the video game [Control](https://en.wikipedia.org/wiki/Control_(video_game)) now enhanced with a Gemini-powered question-answering system for an interactive experience.
+# [Control](https://en.wikipedia.org/wiki/Control_(video_game)) themed wiki app.
 
 
-### Data scraped using Python Scrapy library and stored in Firebase Realtime database. Flutter frontend for mobile application. Gemini Question Answering System added
+### Data queried using MediaWiki API. 
+### Flutter frontend for mobile application. 
+<!-- Gemini Question Answering System added -->
 
 ## Folder structure
 
-- controlscrape: Scrapy code
+- controlscrape: API
 - control_lore: Flutter application 
 
 ## Setup for mobile app 
@@ -34,9 +36,9 @@ If you use Android Studio or IntelliJ you can use run / debug configurations
 (https://www.jetbrains.com/help/idea/run-debug-configuration.html).
 
 ## To Do
-- Scrape multimedia youtube links and add to mobile app as url redirect button
+- ~~Scrape multimedia youtube links and add to mobile app as url redirect button~~
 - ~~Add local json load and parsing instead of firebase dependency.~~
-- ~~QA System hosted on server(Provided I get resources to host the models lol.)~~
+
 ## Images
 <br></br>
 <br></br>
