@@ -18,6 +18,7 @@ class SubgroupPage extends StatelessWidget {
         theChildWidget: ListView.builder(
           itemCount: subgroups.length,
           itemBuilder: (context, index) {
+            final subgroup = subgroups[index];
             return ExpansionTile(
               collapsedIconColor: const Color.fromARGB(255, 231, 0, 13),
               iconColor: Colors.white,
@@ -30,15 +31,16 @@ class SubgroupPage extends StatelessWidget {
                   color: Color.fromARGB(255, 231, 0, 13),
                 ),
               ),
-              children: [
-                ListView.builder(
-                  physics: const ClampingScrollPhysics(),
-                  itemCount: subgroups[index].items.length,
-                  itemBuilder: (ctx, idx) {
-                    return GestureDetector(
+              children: subgroup.items.map(
+                (item) {
+                  return SizedBox(
+                    width: double.infinity,
+                    child: GestureDetector(
                       onTap: () {
-                        GoRouter.of(context).pushNamed('itempage',
-                            extra: subgroups[index].items[idx]);
+                        context.pushNamed(
+                          'itempage',
+                          extra: item,
+                        );
                       },
                       child: Card(
                         shadowColor: Colors.red,
@@ -47,7 +49,7 @@ class SubgroupPage extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(20.0),
                           child: Text(
-                            subgroups[index].items[idx].itemName,
+                            item.itemName,
                             style: const TextStyle(
                               fontFamily: 'AGBuchBQ-Regular',
                               fontSize: 16.0,
@@ -56,11 +58,10 @@ class SubgroupPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                    );
-                  },
-                  shrinkWrap: true,
-                ),
-              ],
+                    ),
+                  );
+                },
+              ).toList(),
             );
           },
         ),

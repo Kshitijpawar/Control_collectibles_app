@@ -129,3 +129,5 @@ dmypy.json
 .pyre/
 control_lore/lib/api_key.dart
 .vscode/launch.json
+.DS_Store
+controlscrape_clean/debug.ipynb

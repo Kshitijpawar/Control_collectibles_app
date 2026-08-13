@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:control_lore/screens/app_bar.dart';
 import 'package:control_lore/screens/background_page.dart';
+import 'package:control_lore/widgets/item_blob.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 
@@ -34,30 +35,18 @@ class ItemPage extends StatelessWidget {
                 const SizedBox(
                   height: 10,
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 20, right: 20),
-                  child: CachedNetworkImage(
-                    imageUrl: item.itemImageUrl,
-                    errorWidget: (context, url, error) {
-                      return const Image(
-                        image: ExactAssetImage('assets/Hiss_Pattern.png'),
-                      );
-                    },
-                    progressIndicatorBuilder: (context, url, progress) {
-                      return Center(
-                        child: CircularProgressIndicator(
-                          value: progress.progress,
-                        ),
-                      );
-                    },
+                if (item.blob != null) ...[
+                  Padding(
+                    padding: const EdgeInsets.only(left: 20, right: 20),
+                    child: ItemBlob(blob: item.blob!),
                   ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                if (item.itemText != "n/a")
-                  const Text(
-                    "TRANSCRIPT",
+                  const SizedBox(
+                    height: 10,
+                  ),
+                ],
+                if (item.payload.text.isEmpty)
+                  Text(
+                    item.payload.type.replaceAll('_', ' ').toUpperCase(),
                     style: TextStyle(
                       fontFamily: 'ITCAvantGardeStd-Demi',
                       fontSize: 20.0,
@@ -65,10 +54,12 @@ class ItemPage extends StatelessWidget {
                     ),
                   ),
                 Html(
-                  data: item.itemText,
+                  data: item.payload.text,
                   style: {
                     "p": Style(
-                        color: Colors.white, fontFamily: 'AGBuchBQ-Regular')
+                      color: Colors.white,
+                      fontFamily: 'AGBuchBQ-Regular',
+                    )
                   },
                 ),
               ],

@@ -11,14 +11,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       actions: [
-        IconButton(
-          onPressed: () {
-            print("Question answer button pressed");
-            GoRouter.of(context).pushNamed('chatpage',
-                            );
-          },
-          icon: const Icon(Icons.question_answer),
-        ),
+        // IconButton(
+        //   onPressed: () {
+        //     print("Question answer button pressed");
+        //     GoRouter.of(context).pushNamed('chatpage',
+        //                     );
+        //   },
+        //   icon: const Icon(Icons.question_answer),
+        // ),
         IconButton(
           icon: const Icon(
             Icons.info_outlined,
@@ -27,9 +27,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             return showAboutDialog(
               context: context,
               applicationName: "Control Wiki",
-              applicationVersion: "1.0.0",
+              applicationVersion: "1.1.0",
               applicationLegalese:
-                  "Copyrights Reserved. Data scraped from Fandom. All images are property of Remedy Entertainment, used for personal use only.",
+                  "Copyrights Reserved. Data scraped from Fandom using MediaWiki API. All images are property of Remedy Entertainment, used for personal use only.",
               children: [
                 const Padding(
                   padding: EdgeInsets.all(15.0),

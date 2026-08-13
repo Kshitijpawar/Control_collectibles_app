@@ -1,34 +1,18 @@
 import 'dart:convert';
 
 import 'package:control_lore/screens/background_page.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
+
 import '../models/group.dart';
 import 'app_bar.dart';
 
-Future<List<Group>> fetchData() async {
-  final List<Group> finalData = [];
-
-  // await Future.delayed(const Duration(seconds: 2), () {});
-  // ignore: unused_local_variable
-  final FirebaseApp fbApp = await Firebase.initializeApp();
-
-  final testRef = FirebaseDatabase.instance.ref();
-  final stringData = await testRef.get();
-  final jsonMap = stringData.value as Map;
-  jsonMap.forEach((key, value) {
-    finalData.add(Group.fromJson(key, value));
-  });
-  return finalData;
-}
 
 Future<List<Group>> fetchDataFromJson() async {
   final List<Group> finalJsonData = [];
   String jsonString =
-      await rootBundle.loadString('assets/json_file/master.json');
+      await rootBundle.loadString('assets/json_file/collectibles.json');
   final jsonMap = jsonDecode(jsonString);
   jsonMap.forEach((key, value) {
     finalJsonData.add(Group.fromJson(key, value));
@@ -51,7 +35,6 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     // theData = fetchData();
     theData = fetchDataFromJson();
-
   }
 
   @override
