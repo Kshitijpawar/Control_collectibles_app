@@ -41,11 +41,9 @@ dependencies:
   flutter_html: ^3.0.0-alpha.6
   cached_network_image: ^3.4.1
   flutter_launcher_icons: ^0.14.1
-  google_generative_ai: ^0.4.6
   flutter_markdown_plus: ^1.0.12
   youtube_player_iframe: ^6.0.2
-  just_audio: ^0.10.6
-
+  flutter_soloud: ^4.1.7
 dev_dependencies:
   flutter_test:
     sdk: flutter

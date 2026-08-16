@@ -17,81 +17,54 @@ class ItemPage extends StatelessWidget {
       appBar: const CustomAppBar(),
       backgroundColor: const Color.fromARGB(255, 0, 0, 0),
       body: BackgroundWidget(
-        theChildWidget: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
+        theChildWidget: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                item.itemName,
+                style: const TextStyle(
+                  fontFamily: 'ITCAvantGardeStd-Demi',
+                  fontSize: 20.0,
+                  color: Color.fromARGB(255, 231, 0, 13),
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              if (item.blob != null) ...[
+                Padding(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: ItemBlob(blob: item.blob!),
+                ),
                 const SizedBox(
                   height: 10,
                 ),
+              ],
+              if (item.payload.text.isEmpty)
                 Text(
-                  item.itemName,
-                  style: const TextStyle(
+                  item.payload.type.replaceAll('_', ' ').toUpperCase(),
+                  style: TextStyle(
                     fontFamily: 'ITCAvantGardeStd-Demi',
                     fontSize: 20.0,
                     color: Color.fromARGB(255, 231, 0, 13),
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                if (item.blob != null) ...[
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20, right: 20),
-                    child: ItemBlob(blob: item.blob!),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                ],
-                if (item.payload.text.isEmpty)
-                  Text(
-                    item.payload.type.replaceAll('_', ' ').toUpperCase(),
-                    style: TextStyle(
-                      fontFamily: 'ITCAvantGardeStd-Demi',
-                      fontSize: 20.0,
-                      color: Color.fromARGB(255, 231, 0, 13),
-                    ),
-                  ),
-                Html(
-                  data: item.payload.text,
-                  style: {
-                    "p": Style(
-                      color: Colors.white,
-                      fontFamily: 'AGBuchBQ-Regular',
-                    )
-                  },
-                ),
-              ],
-            ),
+              Html(
+                data: item.payload.text,
+                style: {
+                  "p": Style(
+                    color: Colors.white,
+                    fontFamily: 'AGBuchBQ-Regular',
+                  )
+                },
+              ),
+            ],
           ),
         ),
       ),
     );
   }
 }
-
-// class ImageDialog extends StatelessWidget {
-//   final Item item;
-//   const ImageDialog({super.key, required this.item});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Dialog(
-//       // child: Container(
-//       //   width: 200,
-//       //   height: 200,
-//       //   decoration: BoxDecoration(
-//       //     image: DecorationImage(
-//       //       image: CachedNetworkImageProvider(item.itemImageUrl),
-//       //     ),
-//       //   ),
-//       // ),
-//       child: Expanded(
-//         child: CachedNetworkImage(
-//           imageUrl: item.itemImageUrl,
-//         ),
-//       ),
-//     );
-//   }
-// }
