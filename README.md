@@ -41,10 +41,8 @@ If you use Android Studio or IntelliJ you can use run / debug configurations
 
 ## Images
 <br></br>
-<br></br>
-<img src="images/Screenshot 2024-11-21 at 10.41.49 AM.png" alt="screenshot 1" height="500"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="images/Screenshot_1678166356.png" alt="screenshot 2" height="500"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="images/Screenshot_1678166382.png" alt="screenshot 3" height="500"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="images/Screenshot 2024-11-21 at 10.46.55 AM.png" alt="screenshot 4" height="500"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="images/Screenshot 2024-11-21 at 10.42.09 AM.png" alt="screenshot 5" height="500"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src="images/Screenshot 2024-11-21 at 10.45.51 AM.png" alt="screenshot 5" height="500"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="images/image0.png" alt="screenshot 1" height="500"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="images/image1.png" alt="screenshot 2" height="500"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="images/image2.png" alt="screenshot 3" height="500"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="images/image3.png" alt="screenshot 4" height="500"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="images/image4.png" alt="screenshot 5" height="500"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
